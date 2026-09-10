@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dqengine"
+version = "0.1.0"
+description = "A Python engine for profiling and analyzing data quality"
+readme = "README.md"
+requires-python = ">=3.12"
+
+authors = [
+    { name = "Rekik Samson", email = "rekiksamson5@gmail.com" }
+]
+
+license = "MIT"
+license-files = ["LICENSE"]
+
+keywords = [
+    "data-quality",
+    "data-profiling",
+    "data-analysis",
+    "pandas",
+    "data-validation"
+]
+
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.12",
+    "Operating System :: OS Independent"
+]
+
+dependencies = [
+    "pandas"
+]
+
+[project.urls]
+Homepage = "YOUR_GITHUB_REPOSITORY_URL"
+Repository = "YOUR_GITHUB_REPOSITORY_URL"
+Issues = "YOUR_GITHUB_REPOSITORY_URL/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]
