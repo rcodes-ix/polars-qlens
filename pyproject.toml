@@ -20,7 +20,7 @@ keywords = [
     "data-quality",
     "data-profiling",
     "data-analysis",
-    "pandas",
+    "polars",
     "data-validation"
 ]
 
@@ -32,7 +32,7 @@ classifiers = [
 ]
 
 dependencies = [
-    "pandas"
+    "polars>=1.0"
 ]
 
 [project.urls]

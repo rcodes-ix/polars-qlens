@@ -8,13 +8,23 @@ A Python engine for profiling and analyzing data quality.
 
 It is designed to make it easier to understand the structure and quality of a dataset before using it for analysis, machine learning, or other data-driven applications.
 
+Built with Polars for fast DataFrame operations and designed to be extensible as the project grows.
+
 ## Features
 
-- Dataset profiling with pandas
+- Dataset profiling with Polars
 - Automatic data quality analysis
 - Detection and analysis of missing data
 - Column type analysis
 - Numerical and categorical column analysis
+- Constant column detection
+- Duplicate row detection
+- Duplicate column detection
+- Inconsistent categorical value detection
+- Date column detection
+- Invalid date detection
+- Outlier detection using the IQR method
+- Correlation analysis
 - Overall data quality scoring
 - HTML quality reports
 - JSON quality reports
@@ -31,34 +41,55 @@ pip install dqengine-py
 
 ## Usage
 
-Import `dqengine` in your Python project:
+Import `DatasetProfiler` from `dqengine`:
 
 ```python
 from dqengine import DatasetProfiler
 ```
 
-Load your dataset with pandas and create a profiler:
+Create a profiler using the path to your CSV dataset:
 
 ```python
-import pandas as pd
-from dqengine import DatasetProfiler
-
-data = pd.read_csv("data.csv")
-
-profiler = DatasetProfiler(data)
-profiler.profile()
+profiler = DatasetProfiler("data.csv")
 ```
 
-The profiler analyzes the dataset and can be used to generate a data quality report.
+Load and profile the dataset:
+
+```python
+profiler.load_csv()
+results = profiler.profile()
+```
+
+The profiler analyzes the dataset and returns the results as a Python dictionary.
 
 ## Reports
 
-`dqengine-py` supports generating data quality reports in different formats, including:
+`dqengine-py` supports generating data quality reports in different formats:
 
+* Terminal output for quick inspection
 * HTML for human-readable reports
 * JSON for programmatic use
 
-Example output files:
+Example:
+
+```python
+from dqengine import DatasetProfiler
+from dqengine.report import QualityReport
+
+
+profiler = DatasetProfiler("data.csv")
+
+profiler.load_csv()
+results = profiler.profile()
+
+report = QualityReport(results)
+
+report.generate()
+report.to_json("quality_report.json")
+report.to_html("quality_report.html")
+```
+
+The generated files are:
 
 ```text
 quality_report.html
@@ -67,7 +98,7 @@ quality_report.json
 
 The HTML report provides a visual overview of the dataset's quality, while the JSON report is useful when the results need to be processed by another program.
 
-## Example
+## Example Workflow
 
 A typical workflow looks like this:
 
@@ -75,40 +106,106 @@ A typical workflow looks like this:
 CSV Dataset
     |
     v
-Pandas DataFrame
+DatasetProfiler
     |
     v
-DatasetProfiler
+Polars DataFrame
     |
     v
 Data Quality Analysis
     |
-    +------> Quality Score
+    +------> Missing Data Analysis
     |
     +------> Column Analysis
     |
-    +------> Missing Data Analysis
+    +------> Duplicate Detection
     |
-    +------> Data Statistics
+    +------> Category Analysis
+    |
+    +------> Date Analysis
+    |
+    +------> Outlier Detection
+    |
+    +------> Correlation Analysis
+    |
+    +------> Quality Score
     |
     v
-Quality Report
+QualityReport
+    |
+    +------> Terminal
     |
     +------> HTML
     |
     +------> JSON
 ```
 
+## Analysis
+
+The profiler currently analyzes several aspects of dataset quality.
+
+### Missing Values
+
+Detects missing values in each column and calculates the percentage of missing values.
+
+### Duplicate Rows
+
+Detects duplicate rows in the dataset and reports the total number found.
+
+### Constant Columns
+
+Identifies columns containing only one unique value.
+
+### Inconsistent Categories
+
+Detects categorical values that differ in formatting but represent the same normalized value.
+
+For example:
+
+```text
+Addis Ababa
+addis ababa
+ADDIS ABABA
+```
+
+### Duplicate Columns
+
+Detects columns containing identical data.
+
+### Date Analysis
+
+Attempts to identify date columns and detects invalid date values.
+
+### Outliers
+
+Detects numerical outliers using the Interquartile Range (IQR) method.
+
+### Correlations
+
+Identifies strongly correlated numerical column pairs.
+
+### Quality Score
+
+Calculates an overall data quality score based on detected issues.
+
+The score is represented on a scale from:
+
+```text
+0 - 100
+```
+
 ## Requirements
 
 * Python 3.12+
-* pandas
+* Polars
 
 ## Project Status
 
 `dqengine-py` is currently in the early development stage.
 
-The current `0.1.0` release focuses on establishing the core profiling and reporting functionality. Future versions will expand the analysis capabilities and improve the reporting system.
+The current `0.1.0` release focuses on establishing the core profiling and reporting functionality.
+
+Future versions will expand the analysis capabilities, improve the reporting system, and introduce additional data quality checks.
 
 ## Development
 
@@ -160,11 +257,5 @@ dqengine/
 This project is licensed under the MIT License.
 
 See the `LICENSE` file for more information.
-
-## Links
-
-* PyPI: [https://pypi.org/project/dqengine-py/](https://pypi.org/project/dqengine-py/)
-* GitHub: [https://github.com/rcodes-ix/dqengine](https://github.com/rcodes-ix/dqengine)
-* Issues: [https://github.com/rcodes-ix/dqengine/issues](https://github.com/rcodes-ix/dqengine/issues)
 
 
