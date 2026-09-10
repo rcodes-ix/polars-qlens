@@ -1,4 +1,3 @@
-````markdown
 # dqengine-py
 
 A Python engine for profiling and analyzing data quality.
