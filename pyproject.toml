@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "dqengine-py"
-version = "0.1.0"
+version = "0.1.1"
 description = "A Python engine for profiling and analyzing data quality"
 readme = "README.md"
 requires-python = ">=3.12"
