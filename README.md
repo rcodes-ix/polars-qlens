@@ -167,5 +167,4 @@ See the `LICENSE` file for more information.
 * GitHub: [https://github.com/rcodes-ix/dqengine](https://github.com/rcodes-ix/dqengine)
 * Issues: [https://github.com/rcodes-ix/dqengine/issues](https://github.com/rcodes-ix/dqengine/issues)
 
-```
-```
+
