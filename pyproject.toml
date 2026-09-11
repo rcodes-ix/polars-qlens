@@ -3,9 +3,9 @@ requires = ["setuptools>=77"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "dqengine-py"
-version = "0.1.1"
-description = "A Python engine for profiling and analyzing data quality"
+name = "polars-qlens"
+version = "0.1.2"
+description = "Data quality profiling and analysis for Python."
 readme = "README.md"
 requires-python = ">=3.12"
 
@@ -32,13 +32,14 @@ classifiers = [
 ]
 
 dependencies = [
-    "polars>=1.0"
+    "polars>=1.0",
+    "numpy>=2.0"
 ]
 
 [project.urls]
-Homepage = "https://github.com/rcodes-ix/dqengine"
-Repository = "https://github.com/rcodes-ix/dqengine"
-Issues = "https://github.com/rcodes-ix/dqengine/issues"
+Homepage = "https://github.com/rcodes-ix/polars-qlens"
+Repository = "https://github.com/rcodes-ix/polars-qlens"
+Issues = "https://github.com/rcodes-ix/polars-qlens/issues"
 
 [tool.setuptools.packages.find]
 where = ["src"]

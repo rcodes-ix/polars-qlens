@@ -1,10 +1,10 @@
-# dqengine-py
+# polars-qlens
 
-A Python engine for profiling and analyzing data quality.
+A lightweight Python package for profiling and analyzing data quality with Polars.
 
 ## Overview
 
-`dqengine-py` is a lightweight Python package for exploring datasets and evaluating their quality through automated profiling and reporting.
+`polars-qlens` is a Python package for exploring datasets and evaluating their quality through automated profiling and reporting.
 
 It is designed to make it easier to understand the structure and quality of a dataset before using it for analysis, machine learning, or other data-driven applications.
 
@@ -12,39 +12,39 @@ Built with Polars for fast DataFrame operations and designed to be extensible as
 
 ## Features
 
-- Dataset profiling with Polars
-- Automatic data quality analysis
-- Detection and analysis of missing data
-- Column type analysis
-- Numerical and categorical column analysis
-- Constant column detection
-- Duplicate row detection
-- Duplicate column detection
-- Inconsistent categorical value detection
-- Date column detection
-- Invalid date detection
-- Outlier detection using the IQR method
-- Correlation analysis
-- Overall data quality scoring
-- HTML quality reports
-- JSON quality reports
-- Simple Python API
-- Designed to be extensible as the project grows
+* Dataset profiling with Polars
+* Automatic data quality analysis
+* Missing value detection and analysis
+* Column type analysis
+* Numerical and categorical column analysis
+* Constant column detection
+* Duplicate row detection
+* Duplicate column detection
+* Inconsistent categorical value detection
+* Date column detection
+* Invalid date detection
+* Outlier detection using the IQR method
+* Correlation analysis
+* Overall data quality scoring
+* HTML quality reports
+* JSON quality reports
+* Simple Python API
+* Extensible project structure
 
 ## Installation
 
 Install the latest release from PyPI:
 
 ```bash
-pip install dqengine-py
-````
+pip install polars-qlens
+```
 
 ## Usage
 
-Import `DatasetProfiler` from `dqengine`:
+Import `DatasetProfiler` from `qlens`:
 
 ```python
-from dqengine import DatasetProfiler
+from qlens import DatasetProfiler
 ```
 
 Create a profiler using the path to your CSV dataset:
@@ -64,7 +64,7 @@ The profiler analyzes the dataset and returns the results as a Python dictionary
 
 ## Reports
 
-`dqengine-py` supports generating data quality reports in different formats:
+`polars-qlens` supports generating data quality reports in different formats:
 
 * Terminal output for quick inspection
 * HTML for human-readable reports
@@ -73,9 +73,8 @@ The profiler analyzes the dataset and returns the results as a Python dictionary
 Example:
 
 ```python
-from dqengine import DatasetProfiler
-from dqengine.report import QualityReport
-
+from qlens import DatasetProfiler
+from qlens.report import QualityReport
 
 profiler = DatasetProfiler("data.csv")
 
@@ -198,12 +197,15 @@ The score is represented on a scale from:
 
 * Python 3.12+
 * Polars
+* NumPy
+
+Dependencies are installed automatically when `polars-qlens` is installed from PyPI.
 
 ## Project Status
 
-`dqengine-py` is currently in the early development stage.
+`polars-qlens` is currently in the early development stage.
 
-The current `0.1.0` release focuses on establishing the core profiling and reporting functionality.
+The current release focuses on establishing the core profiling and reporting functionality.
 
 Future versions will expand the analysis capabilities, improve the reporting system, and introduce additional data quality checks.
 
@@ -237,9 +239,9 @@ pip install -e .
 ## Project Structure
 
 ```text
-dqengine/
+data-quality-engine/
 ├── src/
-│   └── dqengine/
+│   └── qlens/
 │       ├── __init__.py
 │       ├── profiler.py
 │       └── report.py
@@ -257,5 +259,3 @@ dqengine/
 This project is licensed under the MIT License.
 
 See the `LICENSE` file for more information.
-
-

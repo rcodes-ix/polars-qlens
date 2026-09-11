@@ -1,13 +1,12 @@
 .venv/
+.test/
 
 __pycache__/
-
 *.pyc
-
 *.egg-info/
 
+build/
 dist/
 
 quality_report.html
 quality_report.json
-
