@@ -214,8 +214,8 @@ Future versions will expand the analysis capabilities, improve the reporting sys
 Clone the repository:
 
 ```bash
-git clone https://github.com/rcodes-ix/dqengine.git
-cd dqengine
+git clone https://github.com/rcodes-ix/polars-qlens.git
+cd qlens
 ```
 
 Create a virtual environment:
